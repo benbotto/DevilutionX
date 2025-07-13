@@ -2381,6 +2381,7 @@ void Player::_addExperience(uint32_t experience, int levelDelta)
 	const uint32_t maxExperience = GetNextExperienceThresholdForLevel(getMaxCharacterLevel());
 
 	// ensure we only add enough experience to reach the max experience cap so we don't overflow
+	clampedExp *= 2;
 	_pExperience += std::min(clampedExp, maxExperience - _pExperience);
 
 	if (*GetOptions().Gameplay.experienceBar) {
